@@ -11,39 +11,39 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value="/test")
+@RequestMapping(value = "/test")
 public class IndexController {
 
-//	private static final String USERNAME ="Jhonnyer";
+	// private static final String USERNAME ="Jhonnyer";
 	@Value("${text.indexController.titulo}")
 	private String USERNAME;
-	
-	@RequestMapping(value="/prueba", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/prueba", method = RequestMethod.GET)
 	public String getPrueba() {
-		System.out.println("Hola mundo, bienvenidos");
-		return "index";
-	} 
-	
-	@GetMapping("/pruebasinretorno")
-	public void getPruebsinRetorno() {
-		System.out.println("Prueba sin retorno");
+		System.out.println("La aplicación inicia correctamente");
+		return "endpoint is running";
 	}
-	
-	@PostMapping("/getObjeto")
+
+	@GetMapping("/pruebavacia")
+	public void getPruebsinRetorno() {
+		System.out.println("Prueba vacía");
+	}
+
+	@PostMapping("/retornaObjeto")
 	public Object getObjecto(@RequestBody Object object) {
 		System.out.println("Test Request Body");
 		System.out.println(object);
 		return object;
 	}
-	
-	@GetMapping("/indexParam/{nombre}")
+
+	@GetMapping("/parametro/{nombre}")
 	public String indexParam(@PathVariable("nombre") String nombre) {
 		System.out.println(USERNAME);
-		System.out.println("Hola "+nombre+" bienvenido al sistema");
+		System.out.println("Buenas " + nombre + " bienvenido a nuestra aplicación");
 		System.out.println("Test GIT 1 de prueba ");
 		System.out.println("Test GIT 2 de prueba");
 		System.out.println("Test GIT 3 de prueba");
 		return nombre;
 	}
-	
+
 }
